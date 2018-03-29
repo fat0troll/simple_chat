@@ -19,6 +19,10 @@ ru:
               invalid: "введён неверно"
     models:
       user: "Пользователь"
+  chat:
+    message:
+      placeholder: "Введите текст сообщения…"
+      send: "Отправить"
   devise:
     confirmations:
       confirmed: "Ваш адрес эл. почты успешно подтвержден."

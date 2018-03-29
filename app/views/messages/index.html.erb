@@ -1,0 +1,30 @@
+<div class="container mb-5">
+    <div class="row">
+        <div class="col-sm" id="chat-window">
+            <% @messages.each do |message| %>
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="card border-dark">
+                            <div class="card-header"><%= message.user.name %></div>
+                            <div class="card-body">
+                                <p class="card-text"><%= message.message_body %></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+            <% end %>
+        </div>
+    </div>
+</div>
+
+<nav class="navbar fixed-bottom navbar-light bg-light">
+    <%= form_for ChatMessage.new, :remote => true, :url => messages_path, :html => {:class => "mx-2 my-auto d-inline w-100", :id => "new-chat-message"} do |f| %>
+        <div class="input-group">
+            <%= f.text_field :message_body, :class => "form-control border border-right-0", :placeholder => (I18n.t "chat.message.placeholder") %>
+            <span class="input-group-append">
+                <%= f.submit (I18n.t "chat.message.send"), :class => "btn btn-outline-secondary border border-left-0" %>
+            </span>
+        </div>
+    <% end %>
+</nav>
